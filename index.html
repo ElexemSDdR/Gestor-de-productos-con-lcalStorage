@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de productos con localStorage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section class="mainMenu" id="mainMenu">
+        <button onclick="showForm()">Cargar productos</button>
+        <button onclick="showTable()">Tabla</button>
+    </section>
+    <section class="loadProducts" id="loadProducts" hidden>
+        <button onclick="backToMenu()">volver</button>
+        <input placeholder="Nombre del producto" id="nombre" type="text">
+        <input placeholder="Precio" id="price" type="number">
+        <input placeholder="Stock" id="stock" type="number">
+        <input placeholder="Rubro" id="rub" type="text">
+        <button id="load">Cargar producto</button>
+    </section>
+    <section class="table" id="table" hidden>
+        <button onclick="backToMenu()">volver</button>
+        <!--Hacer que los th tengasn la capacidad de que al hacerle click que ordene todo de orden ascendente y con otro click de orden decendiente-->
+        <table>
+            <thead>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Rubro</th>
+                <th><select id="selectRub">
+                </select></th>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

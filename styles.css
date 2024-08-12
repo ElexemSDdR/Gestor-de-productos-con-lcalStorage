@@ -1,0 +1,30 @@
+body{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 100svh;
+}
+
+.mainMenu{
+    display: flex;
+    margin: 0;
+    border: 1px solid #141414;
+    border-radius: 10px;
+    width: 40rem;
+    justify-content: space-around;
+    align-items: center;
+    height: 20em;
+
+    button{
+        max-height: 2.5rem;
+        height: 100%;
+        border: none;
+        max-width: 14em;
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+.disapear{
+    display: none;
+}
