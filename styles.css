@@ -25,6 +25,46 @@ body{
     }
 }
 
-.disapear{
-    display: none;
+table{
+    border: 1px solid #161616;
+    border-collapse: collapse;
+
+    thead th select{
+        width: 100%;
+    }
+
+    tr{
+        border: 1px solid #161616;
+
+        .celdButton{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: space-around;
+            align-items: center;
+            border: none;
+            gap: 2px;
+            
+            button{
+                width: 30px;
+                height: 30px;
+                border: 1px solid #161616;
+                cursor: pointer;
+                background-color: #ffffff00;
+                border-radius: 50%;
+            }
+        }
+
+        td{
+            border: 1px solid #141414;
+            width: 6rem;
+            text-align: center;
+        }
+    }
+}
+
+.sortedButtons{
+    text-decoration: solid;
+    border: none;
+    background-color: #ffffff00;
+    cursor: pointer;
 }

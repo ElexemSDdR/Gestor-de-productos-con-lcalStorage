@@ -60,8 +60,7 @@ const makeTableAndSelectHTML = (productsArray, rubs) => {
             <td>$${product.price}</td>
             <td>${product.stock}</td>
             <td>${product.rubro}</td>
-            <td><button id="deleteButton">del</button></td>
-            <td><button id="editButton">edit</button></td>
+            <td class="celdButton"><button id="deleteButton"><img src="./img/trash.png"></button><button id="editButton"><img src="./img/edit.png"></button></td>
         </tr>
         `
     });
