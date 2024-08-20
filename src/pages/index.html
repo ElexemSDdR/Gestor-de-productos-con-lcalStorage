@@ -1,40 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta id="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de productos con localStorage</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" href="../../img/products.png" type="image/png">
 </head>
+
 <body>
     <section class="mainMenu" id="mainMenu">
-        <button onclick="showForm()">Cargar productos</button>
-        <button onclick="showTable()">Tabla</button>
-    </section>
-    <section class="loadProducts" id="loadProducts" hidden>
-        <button onclick="backToMenu()">volver</button>
-        <input placeholder="Nombre del producto" id="nombre" type="text">
-        <input placeholder="Precio" id="price" type="number">
-        <input placeholder="Stock" id="stock" type="number">
-        <input placeholder="Rubro" id="rub" type="text">
-        <button id="load">Cargar producto</button>
-    </section>
-    <section class="table" id="table" hidden>
-        <button onclick="backToMenu()">volver</button>
-        <!--Hacer que los th tengasn la capacidad de que al hacerle click que ordene todo de orden ascendente y con otro click de orden decendiente-->
+        <div class="mainButtons">
+            <button id="showForm">Agregar producto</button>
+            <button id="showRubers">Rubros</button>
+        </div>
         <table>
             <thead>
-                <th><button class="sortedButtons">Nombre</button></th>
-                <th><button class="sortedButtons">Precio</button></th>
-                <th><button class="sortedButtons">Stock</button></th>
-                <th><button class="sortedButtons">Rubro</button></th>
-                <th><select id="selectRub">
-                </select></th>
+                <th><button class="sortedButtons" id="sortForName">Nombre v</button></th>
+                <th><button class="sortedButtons" id="sortForPrice">Precio</button></th>
+                <th><button class="sortedButtons" id="sortForStock">Stock</button></th>
+                <th><button class="sortedButtons" id="sortForRub">Rubro</button></th>
+                <th>
+                    <select id="selectRub">
+                        <option value>Rubros</option>
+                    </select>
+                </th>
             </thead>
             <tbody id="tbody">
             </tbody>
         </table>
     </section>
-    <script src="../script/script.js"></script>
+    <section class="loadProducts" id="loadProducts" hidden>
+        <button id="backMainMenu" class="backButton" title="Volver al menú inicial"><img src="../../img/return.png"
+                alt="return menu"
+                title="Volver al menú"></button>
+        <div class="loadProductsInfo">
+            <input required placeholder="Nombre del producto" id="nombre" type="text">
+            <input required placeholder="Precio" id="price" type="number">
+            <input required placeholder="Stock" id="stock" type="number">
+            <select id="rubro">
+                <option value>Rubros</option>
+            </select>
+        </div>
+        <button id="load">Agregar producto</button>
+    </section>
+    <section class="loadRubs" id="loadRubs" hidden>
+        <button id="backMainMenu" class="backButton" title="Volver al menú inicial"><img src="../../img/return.png"
+                alt="return menu"
+                title="Volver al menú"></button>
+        <input id="rub" type="text" placeholder="Agregar rubro">
+        <button id="loadRubro">Agregar Rubro</button>
+        <!--Hacer que los th tengasn la capacidad de que al hacerle click que ordene todo de orden ascendente y con otro click de orden decendiente-->
+    </section>
+    <script type="module" src="../script/script.mjs"></script>
 </body>
+
 </html>

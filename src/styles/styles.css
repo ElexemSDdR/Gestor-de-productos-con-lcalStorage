@@ -5,59 +5,142 @@ body{
     height: 100svh;
 }
 
+.backButton{
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0 5% 0;
+    cursor: pointer;
+}
+
 .mainMenu{
-    display: flex;
+    display: grid;
     margin: 0;
     border: 1px solid #141414;
     border-radius: 10px;
     width: 40rem;
     justify-content: space-around;
-    align-items: center;
-    height: 20em;
+    align-items: top;
+    place-items: center;
+    height: auto;
 
-    button{
-        max-height: 2.5rem;
-        height: 100%;
-        border: none;
-        max-width: 14em;
+    .mainButtons{     
+        display: flex;
+        justify-content: space-around;
+        gap: 2rem;
+        flex-direction: row;
         width: 100%;
-        border-radius: 10px;
+        height: 100%;
+        margin-top: 20%;
+        margin-bottom: 0;
+        
+        button{
+            max-height: 3rem;
+            height: 100%;
+            border: none;
+            max-width: 15em;
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .3s;
+    
+            &:hover{
+                background-color: #cacaca;
+            }
+        }
+    }
+
+    table{
+        border: 1px solid #161616;
+        border-collapse: collapse;
+        margin: 5% 0;
+    
+        thead th select{
+            width: 100%;
+            cursor: pointer;
+            border: none;
+        }
+    
+        tr{
+            border: 1px solid #161616;
+            .celdButton{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                place-items: center;
+                border: none;
+                gap: 2px;
+                
+                button{
+                    width: 30px;
+                    height: 30px;
+                    margin: 0 auto;
+                    border: 1px solid #161616;
+                    cursor: pointer;
+                    background-color: #ffffff00;
+                    border-radius: 50%;
+                    transition: .3s;
+    
+                    &:hover{
+                        background-color: #c7c7c7;
+                    }
+                }
+            }
+    
+            td{
+                border: 1px solid #141414;
+                width: 6rem;
+                text-align: center;
+                place-content: center;
+                place-items: center;
+            }
+        }
     }
 }
 
-table{
-    border: 1px solid #161616;
-    border-collapse: collapse;
+.loadProducts{
+    display: grid;
+    gap: 10px;
 
-    thead th select{
-        width: 100%;
+    .backButton{
+        max-width: 5rem;
     }
 
-    tr{
-        border: 1px solid #161616;
+    .loadProductsInfo{
+        display: grid;
+        gap: 10px;
 
-        .celdButton{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            justify-content: space-around;
-            align-items: center;
-            border: none;
-            gap: 2px;
-            
-            button{
-                width: 30px;
-                height: 30px;
-                border: 1px solid #161616;
-                cursor: pointer;
-                background-color: #ffffff00;
-                border-radius: 50%;
+        input{
+            min-width: 15rem;
+            width: 100%;
+            height: 2em;
+
+            &:focus{
+                outline: none;
             }
         }
+    }
 
-        td{
-            border: 1px solid #141414;
-            width: 6rem;
-            text-align: center;
+    #load{
+        max-width: 14rem;
+        width: 100%;
+        height: 2rem;
+        margin: 0 auto;
+    }
+}
+
+.loadRubs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    input{
+        min-width: 15rem;
+        width: 100%;
+        height: 2em;
+
+        &:focus{
+            outline: none;
         }
     }
 }
