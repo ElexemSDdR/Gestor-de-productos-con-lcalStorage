@@ -1,3 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+
+*::before, *::after{
+    box-sizing: border-box;
+}
+
 body{
     display: grid;
     justify-content: center;
@@ -51,51 +59,7 @@ body{
         }
     }
 
-    table{
-        border: 1px solid #161616;
-        border-collapse: collapse;
-        margin: 5% 0;
     
-        thead th select{
-            width: 100%;
-            cursor: pointer;
-            border: none;
-        }
-    
-        tr{
-            border: 1px solid #161616;
-            .celdButton{
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                place-items: center;
-                border: none;
-                gap: 2px;
-                
-                button{
-                    width: 30px;
-                    height: 30px;
-                    margin: 0 auto;
-                    border: 1px solid #161616;
-                    cursor: pointer;
-                    background-color: #ffffff00;
-                    border-radius: 50%;
-                    transition: .3s;
-    
-                    &:hover{
-                        background-color: #c7c7c7;
-                    }
-                }
-            }
-    
-            td{
-                border: 1px solid #141414;
-                width: 6rem;
-                text-align: center;
-                place-content: center;
-                place-items: center;
-            }
-        }
-    }
 }
 
 .loadProducts{
@@ -150,4 +114,69 @@ body{
     border: none;
     background-color: #ffffff00;
     cursor: pointer;
+}
+
+table{
+    border-collapse: collapse;
+    margin: 5% 0;
+}
+
+thead{
+    background-color: #c0ff39;
+    height: 2em;
+    th{
+    background-color: #c0ff39;
+    height: 100%;
+    padding: 0;
+        select{
+            background-color: #afe933;
+            cursor: pointer;
+            border: none;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+
+tr{
+    border: none;
+    background-color: #fff;
+    .celdButton{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-items: center;
+        border: none;
+        gap: 2px;
+        
+        button{
+            width: 30px;
+            height: 30px;
+            margin: 0 auto;
+            border: 1px solid #161616;
+            cursor: pointer;
+            background-color: #ffffff00;
+            border-radius: 50%;
+            transition: .3s;
+            &:hover{
+                background-color: #c7c7c7;
+            }
+        }
+    }
+
+    &:nth-child(odd){
+        background-color: #eeeeee9f;
+    }
+}
+
+tr:hover, td:hover{
+    cursor: pointer;
+    background-color: #e9e9e9;
+}
+
+td{
+    width: 6rem;
+    text-align: center;
+    place-content: center;
+    place-items: center;
 }
