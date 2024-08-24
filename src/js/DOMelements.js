@@ -10,6 +10,7 @@ export let $loadProducts = document.getElementById('loadProducts');
 export let $loadRubs = document.getElementById('loadRubs');
 //Botones del DOM
 export let $backMainMenu = document.querySelector('.backButton');
+export let $backToMainMenu = document.querySelector('#backToMainMenu');
 export let $load = document.getElementById('load');
 export let $loadRubro = document.getElementById('loadRubro');
 export let $showForm = document.getElementById('showForm');

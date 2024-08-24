@@ -1,62 +1,23 @@
-import { $nombre, $price, $stock, $rub, $mainMenu, $loadProducts, $loadRubs, $load, $loadRubro, $sortForName, $sortForPrice, $sortForRub, $sortForStock, $selectRub, $rubro, $backMainMenu, $showForm, $showRubers, $tbody  } from './DOMelements.js'
+import { $nombre, $price, $stock, $rub, $mainMenu, $loadProducts, $loadRubs, $load, $loadRubro, $sortForName, $sortForPrice, $sortForRub, $sortForStock, $selectRub, $rubro, $backMainMenu, $showForm, $showRubers, $tbody, $backToMainMenu } from './DOMelements.js'
 
+import { makeTableAndSelectHTML, addSelects, deleteProduct, editProducts } from "./functions.js";
 
 $loadProducts.style.display = "none" //*Esto para que al inicio solamente se vea el menú de inicio
 $loadRubs.style.display = "none"
 
 //*Variables
 //Arrays que guardarán los productos y los rubros respectivamente.
-let products = [
-    {
-        nombre: 'Manzana',
-        price: 20,
-        stock: 120,
-        rubro: 'Frutas'
-    },
-    {
-        nombre: 'Melon',
-        price: 50,
-        stock: 80,
-        rubro: 'Frutas'        
-    },
-    {
-        nombre: 'Lechuga',
-        price: 10,
-        stock: 220,
-        rubro: 'Verdura'
-    },
-    {
-        nombre: 'Escoba',
-        price: 70,
-        stock: 200,
-        rubro: 'Limpieza'
-    }
-];
-let rubros = ['Frutas', 'Veduras', 'Limpieza'];
+let products = [];
+let rubros = [];
 let estado = false;
 
-function makeTableAndSelectHTML(productsArray) {
-    $selectRub.innerHTML = ''
-    $tbody.innerHTML = '';
-    productsArray.forEach( (product, index) => {
-        $tbody.innerHTML += `
-        <tr>
-            <td>${product.nombre}</td>
-            <td>$${product.price}</td>
-            <td>${product.stock}</td>
-            <td>${product.rubro}</td>
-            <td class="celdButton"><button title="Eliminar producto" onclick="deleteProducts(${index})"><img src="../../img/trash.png" alt="Tacho de basura"></button><button title="Editar producto"><img src="../../img/edit.png" alt="Imagen de editar"></button></td>
-        </tr>
-        `
-    });    
-};
 
-function addSelects () {
-    JSON.parse(localStorage.getItem('Rubros')).forEach(rubr => {
-        $rubro.innerHTML += `<option value="${rubr}">${rubr}</option>`;
-    });
-    JSON.parse(localStorage.getItem('Rubros')).forEach(addRub => $selectRub.innerHTML += `<option value="${addRub}">${addRub}</option>`);
-}
+
+//Esto hará que las funciones para eliminar productos y editarlos sean globales para que no tengan problemas con el type module.
+window.deleteProduct = deleteProduct;
+window.editProducts = editProducts;
+
+
 
 
 //*Cargar los productos en el array de productos
@@ -64,6 +25,14 @@ $load.addEventListener('click', () => {
     if (($rubro.value === '') || ($nombre.value === '') || ($price.value === '') || ($stock.value === '')) {
         alert('rellene todos los campos');
     } else{
+        //Se verifica que no se repitan nombres de productos, y si los hay termina ahí la función, y sino se agrega el producto.
+        JSON.parse(localStorage.getItem('Product')).forEach( el => {
+            if ($nombre.value === el.nombre){
+                alert('Ya existe un producto con este nombre')
+                exit 
+            };
+        });
+
         products.push({
             nombre: $nombre.value,
             price: parseFloat($price.value),
@@ -77,34 +46,42 @@ $load.addEventListener('click', () => {
     }
 });
 
+//*Agregar los rubros a su respectivo array
 $loadRubro.addEventListener('click', () => {
     if ($rub.value === '') {
         alert('rellene todos los campos')
     } else {
         rubros.push($rub.value);
-        localStorage.setItem('Rubros', JSON.stringify(rubros));        
+        localStorage.setItem('Rubros', JSON.stringify(rubros));   
+        alert('El rubro se ha agregado')     
     }
 });
 
 //* Funciones para mostrar los selects para cargar, ver la tabla y volver al menú
-//Mostrar formulario para cargar productos
+//Mostrar formulario para cargar productos.
 $showForm.addEventListener('click', () => {
     $loadProducts.style.display = "grid";
     $loadRubs.style.display = "none";
     $mainMenu.style.display = "none";
 })
 
-//Volver al menú inicial
-$backMainMenu.addEventListener('click', () => {
-    $mainMenu.style.display = "grid";
-    $loadProducts.style.display = "none";
-    $loadRubs.style.display = "none";
-})
-
+//Mostrar los rubros.
 $showRubers.addEventListener('click', () => {
     $loadRubs.style.display = "flex";
     $loadProducts.style.display = "none";
     $mainMenu.style.display = "none";
+})
+
+//Volver al menú principal desde el formulario para cargar los productos.
+$backMainMenu.addEventListener('click', () => {
+    $mainMenu.style.display = "grid";
+    $loadProducts.style.display = "none";
+});
+
+//Volver al menú principal desde el formulario para cargar los rubros.
+$backToMainMenu.addEventListener('click', () => {
+    $mainMenu.style.display = "grid";
+    $loadRubs.style.display = "none";
 })
 
 //*Crear la tabla con los productos en HTML
@@ -173,17 +150,9 @@ $sortForRub.addEventListener('click', () => {
 //*Llamar los productos guardados en el localStorage y mostrarlos 
 
 
-//Eliminar productos
-function deleteProducts(index) {
-    let eliminatedProducts = JSON.parse(localStorage.getItem('Product'));
-    eliminatedProducts.splice(index, 1);
-    localStorage.setItem('Product', JSON.stringify(eliminatedProducts));
-    return makeTableAndSelectHTML(JSON.parse(localStorage.getItem('Product')));
-}
-
-products = JSON.parse(localStorage.getItem('Product'))
-addSelects();
-makeTableAndSelectHTML(products);
+//Esto hará que cada vez que se cargue o recargue la página se muestren los productos guardados en el localStorage.
+products = JSON.parse(localStorage.getItem('Product'));
+document.addEventListener('DOMContentLoaded', [makeTableAndSelectHTML(products), addSelects()])
 
 
 

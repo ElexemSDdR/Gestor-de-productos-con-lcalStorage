@@ -52,8 +52,9 @@ body{
             border-radius: 10px;
             cursor: pointer;
             transition: .3s;
+            outline: none;
     
-            &:hover{
+            &:hover, &:focus{
                 background-color: #cacaca;
             }
         }
@@ -78,10 +79,7 @@ body{
             min-width: 15rem;
             width: 100%;
             height: 2em;
-
-            &:focus{
-                outline: none;
-            }
+            outline: none;
         }
     }
 
@@ -90,6 +88,11 @@ body{
         width: 100%;
         height: 2rem;
         margin: 0 auto;
+        outline: none;
+    }
+
+    select{
+        outline: none;
     }
 }
 
@@ -122,18 +125,23 @@ table{
 }
 
 thead{
-    background-color: #c0ff39;
-    height: 2em;
+    height: fit-content;
     th{
-    background-color: #c0ff39;
-    height: 100%;
-    padding: 0;
+    background-color: #99d811;
+    height: 2em;
+    
         select{
-            background-color: #afe933;
+            text-align: center;
+            color: #303030;
+            text-align: center;
+            background-color: #8ebe4e;
             cursor: pointer;
             border: none;
             height: 100%;
             width: 100%;
+            margin: 0;
+            border: none;
+            outline: none;
         }
     }
 }
@@ -180,3 +188,4 @@ td{
     place-content: center;
     place-items: center;
 }
+
