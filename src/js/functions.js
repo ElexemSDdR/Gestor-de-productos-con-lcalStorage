@@ -1,4 +1,4 @@
-import { $rubro, $selectRub, $tbody } from "./DOMelements.js";
+import { $rubro, $selectRub, $tbody, $editedName, $editedPrice, $editedStock, $dialog, $closeEditorProduct } from "./DOMelements.js";
 
 //Eliminar productos
 export function deleteProduct(index) {
@@ -6,17 +6,22 @@ export function deleteProduct(index) {
     newProducts.splice(index, 1);
     localStorage.setItem('Product', JSON.stringify(newProducts));
     makeTableAndSelectHTML(JSON.parse(localStorage.getItem('Product')));
-    addSelects()
-}
-//Editar productos
-export function editProducts(index) {
-    
+    addSelects();
 }
 
-export function makeTableAndSelectHTML(productsArray) {
-    $selectRub.innerHTML = ''
+//Editar productos
+export function editProducts(index) {
+    $dialog.setAttribute('open');
+    let editProducts = JSON.parse(localStorage.getItem('Product')) || [];
+    if ((typeof $editedPrice !== 'number') || (typeof $editedStock !== 'number')){
+        alert('Ingrese números en la parte del precio y el stock');
+    }
+}
+
+export const  makeTableAndSelectHTML = (arrayOfProducts) => {
+    $selectRub.innerHTML = '';
     $tbody.innerHTML = '';
-    productsArray.forEach( (product, index) => {
+    arrayOfProducts.forEach( (product, index) => {
         $tbody.innerHTML += `
         <tr>
             <td>${product.nombre}</td>
@@ -38,6 +43,7 @@ export function makeTableAndSelectHTML(productsArray) {
 
 export function addSelects () {
     $rubro.innerHTML = '';
+    $selectRub.innerHTML = '';
     JSON.parse(localStorage.getItem('Rubros')).forEach(rubr => {
         $rubro.innerHTML += `<option value="${rubr}">${rubr}</option>`;
         $selectRub.innerHTML += `<option value="${rubr}">${rubr}</option>`;
