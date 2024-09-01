@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <h1 class="title">Gestor de productos</h1>
     <section class="mainMenu" id="mainMenu">
         <div class="mainButtons">
             <button id="showForm">Agregar producto</button>
@@ -17,13 +18,12 @@
         </div>
         <table>
             <thead>
-                <th><button class="sortedButtons" id="sortForName">Nombre</button></th>
-                <th><button class="sortedButtons" id="sortForPrice">Precio</button></th>
-                <th><button class="sortedButtons" id="sortForStock">Stock</button></th>
-                <th><button class="sortedButtons" id="sortForRub">Rubro</button></th>
+                <th><button class="sortedButtons" id="sortForName">Nombre <span><img class="normal" src="../../img/flecha-ordenar.png" alt="Ordenar"></span></button></th>
+                <th><button class="sortedButtons" id="sortForPrice">Precio <span><img class="normal" src="../../img/flecha-ordenar.png" alt="Ordenar"></span></button></th>
+                <th><button class="sortedButtons" id="sortForStock">Stock <span><img class="normal" src="../../img/flecha-ordenar.png" alt="Ordenar"></span></button></th>
+                <th><button class="sortedButtons" id="sortForRub">Rubro <span><img class="normal" src="../../img/flecha-ordenar.png" alt="Ordenar"></span></button></th>
                 <th>
                     <select id="selectRub" name="selectRub">
-                        <option value>Rubros</option>
                     </select>
                 </th>
             </thead>
@@ -41,26 +41,39 @@
             <input placeholder="Precio" id="price" type="number">
             <input placeholder="Stock" id="stock" type="number">
             <select id="rubro" name="rubro">
-                <option value>Rubros</option>
             </select>
         </div>
         <button id="load">Agregar producto</button>
     </section>
 
     <section class="loadRubs" id="loadRubs" hidden>
-        <button id="backToMainMenu" class="backButton" title="Volver al menú inicial"><img src="../../img/return.png"
+        <button id="backToMainMenu" class="backButton" title="Volver al menú inicial">
+            <img src="../../img/return.png"
                 alt="return menu"
-                title="Volver al menú"></button>
+                title="Volver al menú">
+        </button>
         <input id="rub" type="text" placeholder="Agregar rubro">
         <button id="loadRubro">Agregar Rubro</button>
+        <table>
+            <thead>
+                <th style="border: 1px solid #161616;"><button class="sortedButtons" id="sortRubTable">Rubros <span><img class="normal" src="../../img/flecha-ordenar.png" alt="Ordenar"></span></button></th>
+                <th style="border: 1px solid #161616;">Eliminar</th>
+            </thead>
+            <tbody id="rubTable">
+                
+            </tbody>
+        </table>
     </section>
 
     <dialog id="dialog">
-        <button id="close"></button>
+        <button id="close" type="submit"><img src="../../img/return.png" alt="return menu"></button>
         <div class="editPrompts">
-            <input id="editedName" type="text" placeholder="Nuevo nombre">
-            <input id="editedPrice" type="number" placeholder="Nuevo precio">
-            <input id="editedStock" type="number" placeholder="Nuevo stock">
+            <label for="editedName">Nuevo nombre</label>
+            <input name="editedName" id="editedName" type="text">
+            <label for="editedPrice">Nuevo precio</label>
+            <input name="editedPrice" id="editedPrice" type="number">
+            <label for="editedStock">Nuevo stock</label>
+            <input name="editedStock" id="editedStock" type="number">
             <button id="closeEditorProduct">Editar</button>
         </div>
     </dialog>
