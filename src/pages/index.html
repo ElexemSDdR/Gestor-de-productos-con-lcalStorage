@@ -37,9 +37,15 @@
                 alt="return menu"
                 title="Volver al menú"></button>
         <div class="loadProductsInfo">
-            <input placeholder="Nombre del producto" id="nombre" type="text">
-            <input placeholder="Precio" id="price" type="number">
-            <input placeholder="Stock" id="stock" type="number">
+            <label class="labelOfProducts">Nombre
+                <input id="nombre" type="text">
+            </label>
+            <label class="labelOfProducts">Precio
+                <input id="price" type="number">
+            </label>
+            <label class="labelOfProducts">Stock
+                <input id="stock" type="number">
+            </label>
             <select id="rubro" name="rubro">
             </select>
         </div>
@@ -66,7 +72,7 @@
     </section>
 
     <dialog id="dialog">
-        <button id="close" type="submit"><img src="../../img/return.png" alt="return menu"></button>
+        <button id="close" class="backButton" type="submit"><img src="../../img/return.png" alt="return menu"></button>
         <div class="editPrompts">
             <label for="editedName">Nuevo nombre</label>
             <input name="editedName" id="editedName" type="text">

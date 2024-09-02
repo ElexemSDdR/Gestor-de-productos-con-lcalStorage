@@ -81,10 +81,16 @@ export const makeRubTable = (rubArray) => {
 
 export const deleteRub = (index) => {
     let newRubs = JSON.parse(localStorage.getItem('Rubros')) || [];
-    newRubs.splice(index, 1);
-    localStorage.setItem('Rubros', JSON.stringify(newRubs));
-    makeRubTable();
-    addSelects();
+    if (JSON.parse(localStorage.getItem('Product')).rubro === newRubs[index]) {
+        return alert('El rubro está en uso, no puede eliminarse');
+    }
+    else {
+        newRubs.splice(index, 1);
+        localStorage.setItem('Rubros', JSON.stringify(newRubs));
+        addSelects();
+        makeRubTable(newRubs);
+        return alert('El rubro se ha eliminado')
+    }
 };
 
 export const filterForRubs = () => {

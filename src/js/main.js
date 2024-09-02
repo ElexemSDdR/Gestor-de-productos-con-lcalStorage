@@ -56,15 +56,23 @@ $load.addEventListener('click', () => {
 
 //*Agregar los rubros a su respectivo array
 $loadRubro.addEventListener('click', () => {
+    rubros.forEach(rub => {
+        if (rub === $rub.value){
+            alert('El rubro ya existe');
+            return exit
+        }
+    })
     if ($rub.value === '') {
         alert('rellene todos los campos');
+        return exit
     }
     else {
         rubros.push($rub.value);
         localStorage.setItem('Rubros', JSON.stringify(rubros));   
-        alert('El rubro se ha agregado');
         addSelects();
-        makeRubTable();
+        makeRubTable(rubros);
+        alert('El rubro se ha agregado');
+        return exit
     }
 });
 

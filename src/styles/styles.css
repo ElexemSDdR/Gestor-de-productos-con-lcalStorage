@@ -1,3 +1,13 @@
+:root{
+    --bgButtonColor: #33fe30ad; 
+    --bgHoverColor: #33fe30cc;
+    --boxShColor: #3ee100;
+}
+
+html{
+    box-sizing: border-box;
+}
+
 *,
 *::before,
 *::after{
@@ -10,16 +20,21 @@ body{
     justify-content: center;
     align-content: center;
     height: 100svh;
-    background: linear-gradient(45deg, #cfcfcf 0%, #ffffff 100%);
+    background: linear-gradient(45deg, #202020 0%, #525252 100%);
     margin: 0;
     padding: 0;
 }
 
 .title{
+    position: absolute;
     text-align: center;
     margin: 0;
     padding-bottom: 40px;
     padding-top: 0;
+    color: #fff;
+    top: 8vh;
+    left: 0;
+    right: 0;
 }
 
 .backButton{
@@ -29,10 +44,11 @@ body{
     height: 2rem;
     margin: 0 0 5% 0;
     cursor: pointer;
+    background: var(--bgButtonColor);
     transition: background-color .3s ease-in-out;
 
     &:hover{
-        background-color: #c7c7c7; 
+        background-color: var(--bgHoverColor); 
     }
 }
 
@@ -62,34 +78,33 @@ body{
         
         button{
             max-height: 3rem;
+            max-width: 15em;
             height: 100%;
             border: none;
-            max-width: 15em;
-            background-color: #33fe30ad;
+            background-color: var(--bgButtonColor);
             width: 100%;
             border-radius: 10px;
             cursor: pointer;
-            transition: transform .1s linear, 
-                box-shadow .1s linear,
-                background-color .1s linear;
+            transition: box-shadow .2s ease-in-out,
+                translate .2s ease-in-out,
+                background-color .1s ease-in-out;
             outline: none;
-            box-shadow: #3ee100 4px 4px 1px;
+            box-shadow: var(--boxShColor) 4px 4px 1px;
     
-            &:hover, &:focus{
-                background-color: #33fe30bf;
-                box-shadow: #3ee100 4px 4px 5px;
+            &:hover{
+                box-shadow: var(--boxShColor) 4px 4px 3px;
+                background-color: var(--bgHoverColor);
 
             }
 
             &:active{
-                box-shadow: #3ee100 0 0 10px;
-                transform: translate(4px, 4px);
+                box-shadow: var(--boxShColor) 0 0 10px;
+                translate: 4px 4px;
             }
         }
-    }
-
-    
+    } 
 }
+
 
 .loadProducts{
     display: grid;
@@ -106,7 +121,7 @@ body{
 
     .loadProductsInfo{
         display: grid;
-        gap: 10px;
+        gap: 8px;
 
         input{
             min-width: 15rem;
@@ -119,12 +134,17 @@ body{
             border: .5px solid #0000005d;
             margin-bottom: 14px;
         }
+
+        .labelOfProducts{
+            margin: 0;
+            padding: 0;
+        }
     }
 
     #load{
         max-width: 14rem;
         width: 100%;
-        height: 2rem;
+        height: 3rem;
         margin: 0 auto;
         outline: none;
         padding-inline: 15px;
@@ -132,12 +152,28 @@ body{
         border-radius: 1.5cap;
         border: none;
         margin-bottom: 14px;
+        cursor: pointer;
+        box-shadow: var(--boxShColor) 4px 4px 1px;
+        background-color: var(--bgButtonColor);
+        transition: box-shadow .2s ease-in-out,
+            translate .2s ease-in-out,
+            background-color .1s ease-in-out;
+
+        &:hover, &:focus{
+            background-color: var(--bgHoverColor);
+            box-shadow: var(--boxShColor) 4px 4px 3px;
+        }
+
+        &:active{
+            box-shadow: var(--boxShColor) 0 0 1px;
+            translate: 4px 4px;
+        }
     }
 
     select{
         outline: none;
         padding-inline: 10px;
-        padding-block: 3px;
+        padding-block: 5px;
         border-radius: 1.5cap;
         border: .5px solid #0000005d;
         margin-bottom: 14px;
@@ -179,9 +215,20 @@ body{
         width: fit-content;
         transition: background-color .3s ease-in-out;
         padding-inline: 20px;
+        background-color: var(--bgButtonColor);
+        box-shadow: var(--boxShColor) 4px 4px 1px;
+        transition: box-shadow .2s ease-in-out,
+            translate .2s ease-in-out,
+            background-color .1s ease-in-out;
 
         &:hover{
-            background-color: #c0c0c0;
+            background-color: var(--bgHoverColor);
+            box-shadow: var(--boxShColor) 4px 4px 3px;
+        }
+
+        &:active{
+            translate: 4px 4px;
+            box-shadow: var(--boxShColor) 0 0 10px;
         }
     }
 }
@@ -347,16 +394,6 @@ dialog[open]{
     @starting-style{
         scale: 0;
     }
-    
-    button#close{
-        cursor: pointer;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        border: none;
-        margin: 0;
-        padding: 0;
-    }
 
     .editPrompts{
         margin: 0;
@@ -365,28 +402,40 @@ dialog[open]{
         align-items: center;
 
         input{
+            min-width: 16rem;
+            width: 100%;
             padding-inline: 15px;
-            padding-block: 3px;
+            padding-block: 5px;
             border-radius: 1cap;
             border: .5px solid #0000005d;
             margin-bottom: 14px;
         }
 
-        button{
+        #closeEditorProduct{
             border-radius: 20px;
             border: none;
             height: 2rem;
             cursor: pointer;
-            outline: 1px solid #eeeeee;
-            transition: background-color .2s ease-in-out, outline .2s linear;
+            outline: 1px solid #eee;
+            background-color: var(--bgButtonColor);
+            transition: background-color .1s ease-in-out,
+                outline .2s linear,
+                box-shadow .2s ease-in-out,
+                translate .2s ease-in-out;
+            box-shadow: var(--boxShColor) 2px 3px 1px;
 
-            &:is(:hover, :focus){
-                background-color: #cecece;
-                outline: 2px solid #a7a7a7;
+            &:hover{
+                background-color: var(--bgHoverColor);
+                box-shadow: var(--boxShColor) 2px 3px 3px;
+                outline: 2px solid var(--bgButtonColor);
+            }
+
+            &:active{
+                box-shadow: var(--boxShColor) 2px 3px 10px;
+                translate: 2px 3px;
             }
         }
     }
-
 }
 
 
@@ -402,20 +451,6 @@ dialog{
     display: grid;
     gap: 15px;
 
-    button#close{
-        cursor: pointer;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        border: none;
-        margin: 0;
-        padding: 0;
-        transition: background-color .2s ease-in-out;
-        &:hover{
-            background-color: #c7c7c7;
-        }
-    }
-
     .editPrompts{
         margin: 0;
         display: grid;
@@ -430,7 +465,7 @@ dialog{
             margin-bottom: 14px;
         }
 
-        button{
+        #closeEditorProduct{
             border-radius: 20px;
             border: none;
             height: 2rem;
