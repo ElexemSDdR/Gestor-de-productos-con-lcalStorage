@@ -32,7 +32,7 @@
         </table>
     </section>
     
-    <section class="loadProducts" id="loadProducts" hidden>
+    <section class="loadProducts" id="loadProducts">
         <button id="backMainMenu" class="backButton" title="Volver al menú inicial"><img src="../../img/return.png"
                 alt="return menu"
                 title="Volver al menú"></button>
@@ -52,7 +52,7 @@
         <button id="load">Agregar producto</button>
     </section>
 
-    <section class="loadRubs" id="loadRubs" hidden>
+    <section class="loadRubs" id="loadRubs">
         <button id="backToMainMenu" class="backButton" title="Volver al menú inicial">
             <img src="../../img/return.png"
                 alt="return menu"
@@ -72,14 +72,19 @@
     </section>
 
     <dialog id="dialog">
-        <button id="close" class="backButton" type="submit"><img src="../../img/return.png" alt="return menu"></button>
+        <button id="close" class="backButton" type="submit">
+            <img src="../../img/return.png" alt="return menu">
+        </button>
         <div class="editPrompts">
             <label for="editedName">Nuevo nombre</label>
             <input name="editedName" id="editedName" type="text">
+
             <label for="editedPrice">Nuevo precio</label>
             <input name="editedPrice" id="editedPrice" type="number">
+
             <label for="editedStock">Nuevo stock</label>
             <input name="editedStock" id="editedStock" type="number">
+
             <button id="closeEditorProduct">Editar</button>
         </div>
     </dialog>

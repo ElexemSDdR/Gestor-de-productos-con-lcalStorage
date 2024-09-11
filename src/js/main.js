@@ -36,7 +36,8 @@ $load.addEventListener('click', () => {
         // Se verifica que no se repitan nombres de productos, y si los hay termina ahí la función, y sino se agrega el producto.  
         products.forEach( el => {
             if ($nombre.value === el.nombre){
-                return alert('Ya existe un producto con este nombre')
+                alert('Ya existe un producto con este nombre')
+                return exit
             };
         });
 
@@ -49,7 +50,8 @@ $load.addEventListener('click', () => {
         
 
         localStorage.setItem('Product', JSON.stringify(products));
-        [$nombre.value, $price.value, $stock.value] = '';
+        [$price.value, $stock.value] = '';
+        $nombre.value = '';
         makeTableAndSelectHTML(products);
     }
 });
