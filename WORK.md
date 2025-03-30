@@ -3,10 +3,10 @@ Utilizando localStorage crear una app o webApp que pertmita gestionar una lista 
 ```javascript
 
 CRUD: {
-Create -> Agreagar un dato
-Read -> mostrarlo 
-Update -> Modificar
-Delete -> Borrar
+    Create -> Agreagar un dato
+    Read -> mostrarlo 
+    Update -> Modificar
+    Delete -> Borrar
 }
 
 //uso de localStorage
